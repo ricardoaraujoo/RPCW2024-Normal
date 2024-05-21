@@ -1,0 +1,364 @@
+@prefix : <http://example.org/farm#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.org/farm#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/farm#childOf
+:childOf rdf:type owl:ObjectProperty ;
+         rdfs:domain :Child ;
+         rdfs:range :FamilyMember .
+
+
+###  http://example.org/farm#cultivates
+:cultivates rdf:type owl:ObjectProperty ;
+            rdfs:domain :Farmer ;
+            rdfs:range :Fruit .
+
+
+###  http://example.org/farm#exchanges
+:exchanges rdf:type owl:ObjectProperty ;
+           rdfs:domain :Farmer ;
+           rdfs:range :Farmer .
+
+
+###  http://example.org/farm#hasChild
+:hasChild rdf:type owl:ObjectProperty ;
+          rdfs:domain :Adult ;
+          rdfs:range :Child .
+
+
+###  http://example.org/farm#hasFarm
+:hasFarm rdf:type owl:ObjectProperty ;
+         rdfs:domain :Farmer ;
+         rdfs:range :Farm .
+
+
+###  http://example.org/farm#helpsWithHarvest
+:helpsWithHarvest rdf:type owl:ObjectProperty ;
+                  rdfs:domain :FamilyMember ;
+                  rdfs:range :Farm .
+
+
+###  http://example.org/farm#hires
+:hires rdf:type owl:ObjectProperty ;
+       rdfs:domain :Farmer ;
+       rdfs:range :Worker .
+
+
+###  http://example.org/farm#makesJam
+:makesJam rdf:type owl:ObjectProperty ;
+          rdfs:domain :FamilyMember ;
+          rdfs:range :Product .
+
+
+###  http://example.org/farm#owns
+:owns rdf:type owl:ObjectProperty ;
+      rdfs:domain :Farmer ;
+      rdfs:range :Animal ,
+                 :Machine .
+
+
+###  http://example.org/farm#protects
+:protects rdf:type owl:ObjectProperty ;
+          rdfs:domain :Dog ;
+          rdfs:range :Farm .
+
+
+###  http://example.org/farm#sellsAtMarket
+:sellsAtMarket rdf:type owl:ObjectProperty ;
+               rdfs:domain :Farmer ;
+               rdfs:range :Product .
+
+
+###  http://example.org/farm#uses
+:uses rdf:type owl:ObjectProperty ;
+      rdfs:domain :Farmer ;
+      rdfs:range :Machine .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://example.org/farm#animalName
+:animalName rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Animal ;
+            rdfs:range xsd:string .
+
+
+###  http://example.org/farm#fruitName
+:fruitName rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Fruit ;
+           rdfs:range xsd:string .
+
+
+###  http://example.org/farm#name
+:name rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Person ;
+      rdfs:range xsd:string .
+
+
+###  http://example.org/farm#paidPerHour
+:paidPerHour rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Worker ;
+             rdfs:range xsd:float .
+
+
+###  http://example.org/farm#receivesMeals
+:receivesMeals rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Worker ;
+               rdfs:range xsd:boolean .
+
+
+###  http://example.org/farm#vegetableName
+:vegetableName rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Vegetable ;
+               rdfs:range xsd:string .
+
+
+###  http://example.org/farm#villageName
+:villageName rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Village ;
+             rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/farm#Adult
+:Adult rdf:type owl:Class ;
+       rdfs:subClassOf :Person .
+
+
+###  http://example.org/farm#Animal
+:Animal rdf:type owl:Class .
+
+
+###  http://example.org/farm#Child
+:Child rdf:type owl:Class ;
+       rdfs:subClassOf :Person .
+
+
+###  http://example.org/farm#Dog
+:Dog rdf:type owl:Class ;
+     rdfs:subClassOf :Animal .
+
+
+###  http://example.org/farm#FamilyMember
+:FamilyMember rdf:type owl:Class ;
+              rdfs:subClassOf :Person .
+
+
+###  http://example.org/farm#Farm
+:Farm rdf:type owl:Class .
+
+
+###  http://example.org/farm#Farmer
+:Farmer rdf:type owl:Class ;
+        rdfs:subClassOf :Person .
+
+
+###  http://example.org/farm#Fruit
+:Fruit rdf:type owl:Class ;
+       rdfs:subClassOf :Product .
+
+
+###  http://example.org/farm#Machine
+:Machine rdf:type owl:Class .
+
+
+###  http://example.org/farm#Person
+:Person rdf:type owl:Class .
+
+
+###  http://example.org/farm#Product
+:Product rdf:type owl:Class .
+
+
+###  http://example.org/farm#Vegetable
+:Vegetable rdf:type owl:Class ;
+           rdfs:subClassOf :Product .
+
+
+###  http://example.org/farm#Village
+:Village rdf:type owl:Class .
+
+
+###  http://example.org/farm#Worker
+:Worker rdf:type owl:Class ;
+        rdfs:subClassOf :Person .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/farm#Ana
+:Ana rdf:type owl:NamedIndividual ,
+              :Child ,
+              :FamilyMember ;
+     :childOf :Maria ;
+     :makesJam :Jam ;
+     :name "Ana" .
+
+
+###  http://example.org/farm#Apple
+:Apple rdf:type owl:NamedIndividual ,
+                :Fruit ;
+       :name "Apple" .
+
+
+###  http://example.org/farm#Banana
+:Banana rdf:type owl:NamedIndividual ,
+                 :Fruit ;
+        :name "Banana" .
+
+
+###  http://example.org/farm#Carlos
+:Carlos rdf:type owl:NamedIndividual ,
+                 :Adult ,
+                 :Farmer ;
+        :cultivates :Carrot ,
+                    :Lettuce ,
+                    :Tomato ;
+        :exchanges :Joao ;
+        :hasFarm :CarlosFarm ;
+        :sellsAtMarket :Carrot ,
+                       :Lettuce ,
+                       :Tomato ;
+        :name "Carlos" .
+
+
+###  http://example.org/farm#CarlosFarm
+:CarlosFarm rdf:type owl:NamedIndividual ,
+                     :Farm .
+
+
+###  http://example.org/farm#Carrot
+:Carrot rdf:type owl:NamedIndividual ,
+                 :Vegetable ;
+        :name "Carrot" .
+
+
+###  http://example.org/farm#Chicken
+:Chicken rdf:type owl:NamedIndividual ,
+                  :Animal ;
+         :name "Chicken" .
+
+
+###  http://example.org/farm#Cow
+:Cow rdf:type owl:NamedIndividual ,
+              :Animal ;
+     :name "Cow" .
+
+
+###  http://example.org/farm#Jam
+:Jam rdf:type owl:NamedIndividual ,
+              :Product ;
+     :name "Jam" .
+
+
+###  http://example.org/farm#Joao
+:Joao rdf:type owl:NamedIndividual ,
+               :Adult ,
+               :Farmer ;
+      :cultivates :Apple ,
+                  :Banana ,
+                  :Orange ;
+      :exchanges :Carlos ;
+      :hasChild :Ana ,
+                :Pedro ;
+      :hires :Worker ;
+      :owns :Chicken ,
+            :Cow ,
+            :Pig ,
+            :Tractor ;
+      :sellsAtMarket :Jam ;
+      :uses :Tractor ;
+      :name "Joao" .
+
+
+###  http://example.org/farm#JoaoFarm
+:JoaoFarm rdf:type owl:NamedIndividual ,
+                   :Farm .
+
+
+###  http://example.org/farm#Lettuce
+:Lettuce rdf:type owl:NamedIndividual ,
+                  :Vegetable ;
+         :name "Lettuce" .
+
+
+###  http://example.org/farm#Maria
+:Maria rdf:type owl:NamedIndividual ,
+                :FamilyMember ;
+       :hasChild :Ana ,
+                 :Pedro ;
+       :makesJam :Jam ;
+       :name "Maria" .
+
+
+###  http://example.org/farm#Orange
+:Orange rdf:type owl:NamedIndividual ,
+                 :Fruit ;
+        :name "Orange" .
+
+
+###  http://example.org/farm#Pedro
+:Pedro rdf:type owl:NamedIndividual ,
+                :Child ,
+                :FamilyMember ;
+       :childOf :Maria ;
+       :name "Pedro" .
+
+
+###  http://example.org/farm#Pig
+:Pig rdf:type owl:NamedIndividual ,
+              :Animal ;
+     :name "Pig" .
+
+
+###  http://example.org/farm#Rex
+:Rex rdf:type owl:NamedIndividual ,
+              :Dog ;
+     :protects :JoaoFarm ;
+     :name "Rex" .
+
+
+###  http://example.org/farm#SaoJose
+:SaoJose rdf:type owl:NamedIndividual ,
+                  :Village ;
+         :villageName "SaoJose" .
+
+
+###  http://example.org/farm#Tomato
+:Tomato rdf:type owl:NamedIndividual ,
+                 :Vegetable ;
+        :name "Tomato" .
+
+
+###  http://example.org/farm#Tractor
+:Tractor rdf:type owl:NamedIndividual ,
+                  :Machine ;
+         :name "Tractor" .
+
+
+###  http://example.org/farm#Worker
+:Worker rdf:type owl:NamedIndividual ,
+                 :Worker ;
+        :paidPerHour "0.0"^^xsd:float ;
+        :receivesMeals "true"^^xsd:boolean .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

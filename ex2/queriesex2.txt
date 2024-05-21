@@ -1,0 +1,93 @@
+11.1
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT (COUNT(?s) AS ?count)
+WHERE { 
+    ?s a :Disease .
+}
+
+11.2
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT *
+WHERE { 
+    ?s a :Disease .
+    ?s :hasSymptom :yellowish_skin.
+} 
+ORDER BY ?nome
+
+
+11.3
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT *
+WHERE { 
+    ?s a :Disease .
+    ?s :hasTreatment :exercise.
+} 
+ORDER BY ?nome
+
+11.4
+
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT *
+WHERE { 
+    ?s a :Patient .
+    ?s :name ?nome.
+} 
+ORDER BY ?nome
+
+
+12.
+
+PREFIX : <http://www.example.org/disease-ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+CONSTRUCT {
+  ?patient :hasDisease ?disease .
+}
+WHERE {
+  ?patient rdf:type :Patient .
+  ?disease rdf:type :Disease .
+
+  ?disease :hasSymptom ?symptom .
+
+  FILTER NOT EXISTS {
+    ?disease :hasSymptom ?diseaseSymptom .
+    FILTER NOT EXISTS {
+      ?patient :exhibitsSymptom ?diseaseSymptom .
+    }
+  }
+}
+
+13.
+
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT ?o (COUNT(?s) AS ?numPatients)
+WHERE { 
+    ?s :hasDisease ?o .
+} 
+GROUP BY ?o
+
+
+14.
+
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT ?d (COUNT(?s) AS ?numDiseases)
+WHERE { 
+    ?s a :Disease .
+    ?d a :Symptom .
+    ?s :hasSymptom ?d.
+} 
+GROUP BY ?d
+
+
+15.
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT ?d (COUNT(?s) AS ?numDiseases)
+WHERE { 
+    ?s a :Disease .
+    ?d a :Treatment .
+    ?s :hasTreatment ?d.
+} 
+GROUP BY ?d
+
+
+

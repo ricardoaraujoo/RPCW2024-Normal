@@ -1,0 +1,43 @@
+1.
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <http://example.org/farm#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+select * where { 
+	?s a owl:Class .
+} 
+
+2.
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT (COUNT(?p) AS ?objectPropertyCount) WHERE { 
+    ?p rdf:type owl:ObjectProperty .
+}
+
+
+3.
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX : <http://example.org/farm#>
+SELECT (COUNT(?s) AS ?individualCount) WHERE {
+    ?s rdf:type owl:NamedIndividual .
+}
+
+
+4.
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <http://example.org/farm#>
+SELECT ?farmer WHERE { 
+    ?farmer rdf:type :Farmer .
+    ?farmer :cultivates :Tomato .
+}
+
+
+5.
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <http://example.org/farm#>
+SELECT ?farmer WHERE { 
+    ?farmer rdf:type :Farmer .
+    ?farmer :hires ?worker .
+}
